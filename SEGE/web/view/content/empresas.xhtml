@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/#{usuariosController.users.template}">
+            <ui:define name="content">
+                <h:form>
+                    <center><h1>EMPRESAS</h1></center>
+                    <p:dataTable id="tableEgre" 
+                                 value="#{empresasController.lstEmpresas}" 
+                                 var="empre" 
+                                 paginator="true" 
+                                 rows="10">
+
+                        <p:column style="width: 50px">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="CÓDIGO">
+                            <h:outputText value="#{empre.codEmp}"/>
+                        </p:column>
+                        <p:column headerText="NOMBRE">
+                            <h:outputText value="#{empre.nomEmp}" />
+                        </p:column>
+                        <p:column headerText="ENCARGADO">
+                            <h:outputText value="#{empre.encEmp}"/>
+                        </p:column>
+                        <p:column headerText="TELEFONO">
+                            <h:outputText value="#{empre.telf1Emp}"/>
+                        </p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid columns="4">
+                                <p:column headerText="DIRECCION">
+                                    <h:outputText value="#{empre.dirEmp}"/>
+                                </p:column>
+                                <p:column headerText="DEPARTAMENTO">
+                                    <h:outputText value="#{empre.dptoEmp}"/>
+                                </p:column>
+                                <p:column headerText="PROVINCIA">
+                                    <h:outputText value="#{empre.provEmp}"/>
+                                </p:column>
+                                <p:column headerText="DISTRITO">
+                                    <h:outputText value="#{empre.disEmp}"/>
+                                </p:column>
+                            </p:panelGrid>                            
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+
+    </body>
+</html>

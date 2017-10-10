@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template/#{usuariosController.users.template}">
+            <ui:define name="content">
+                <h:form>
+                    <center><h1>EGRESADOS</h1></center>
+                    <p:dataTable id="tableEgre" 
+                                 value="#{egresadosController.lstEgresados}" 
+                                 var="egre" 
+                                 paginator="true" 
+                                 rows="10">
+
+                        <p:column style="width: 50px">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="CÓDIGO">
+                            <h:outputText value="#{egre.codigo}"/>
+                        </p:column>
+                        <p:column headerText="NOMBRES">
+                            <h:outputText value="#{egre.nombre} #{egre.apellido}" />
+                        </p:column>
+                        <p:column headerText="DNI">
+                            <h:outputText value="#{egre.dni}"/>
+                        </p:column>
+                        <p:column headerText="INGRESO">
+                            <h:outputText value="#{egre.tipingr}"/>
+                        </p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid columns="6">
+                                <p:column headerText="CORREO">
+                                    <h:outputText value="#{egre.correo}"/>
+                                </p:column>
+                                <p:column headerText="TELEFONO">
+                                    <h:outputText value="#{egre.telf1}"/>
+                                </p:column>
+                                <p:column headerText="CELULAR">
+                                    <h:outputText value="#{egre.telf2}"/>
+                                </p:column>
+                                <p:column headerText="ESTADO">
+                                    <h:outputText value="#{egre.estado}"/>
+                                </p:column>
+                                <p:column headerText="CARRERA">
+                                    <h:outputText value="#{egre.carrera}"/>
+                                </p:column>
+                                <p:column headerText="NACIMIENTO">
+                                    <h:outputText value="#{egre.fing}"/>
+                                </p:column>
+                            </p:panelGrid>                            
+                        </p:rowExpansion>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+
+    </body>
+</html>
