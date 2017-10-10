@@ -11,7 +11,7 @@ public class Dao {
     public void Conexion() {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "MASTERVG", "vallegrande2017");
+            cn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.8.120:1521:XE", "system", "vallegrande2017");
             System.out.println("Conectado");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error: " + e);
