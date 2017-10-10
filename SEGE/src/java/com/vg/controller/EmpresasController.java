@@ -30,6 +30,16 @@ public class EmpresasController implements Serializable {
             
     }
      
+    public void agregarEmpresa(){
+        try {
+            dao.AgregarEmpresa(emp);
+            listarEmpresaAciva();
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
     public void listarEmpresaAciva() throws Exception{
         try {
             lstEmpresaactiva = dao.listarEmpresasActivas();

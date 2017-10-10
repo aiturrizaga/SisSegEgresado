@@ -6,12 +6,34 @@ public class Empresas {
     private String NOM_EMP;
     private String ENC_EMP;
     private Integer TELF1_EMP;
+    private Integer TELF2_EMP;
     private String DIR_EMP;
     private String REF_EMP;
     private String DOC_EMP;
     private String DPTO_EMP;
     private String PROV_EMP;
     private String DIS_EMP;
+    private String EST_EMP;
+
+    public String getEST_EMP() {
+        return EST_EMP;
+    }
+
+    public void setEST_EMP(String EST_EMP) {
+        this.EST_EMP = EST_EMP;
+    }
+    
+    
+
+    public Integer getTELF2_EMP() {
+        return TELF2_EMP;
+    }
+
+    public void setTELF2_EMP(Integer TELF2_EMP) {
+        this.TELF2_EMP = TELF2_EMP;
+    }
+    
+    
 
     public String getCOD_EMP() {
         return COD_EMP;

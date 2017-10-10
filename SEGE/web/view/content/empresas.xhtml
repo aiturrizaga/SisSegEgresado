@@ -11,7 +11,8 @@
             <ui:define name="content">
                 <h:form id="from" >
                     <center><h1>LISTA DE EMPRESAS</h1></center>
-                    <p:commandButton value="Habilitar" onclick="PF('hblemp').show();" />
+                    <p:commandButton value="Habilitar" onclick="PF('hblemp').show();" style="float: left" />
+                    <p:commandButton value="Agregar" onclick="PF('agremp').show();" style="float: right"/>
                     <p:dataTable id="tableEmp" 
                                  value="#{empresasController.lstEmpresaactiva}" 
                                  var="emp" 
@@ -54,8 +55,8 @@
                     <p:contextMenu for="tableEmp">
                         <p:menuitem value="deshabilitar" actionListener="#{empresasController.desabilitarEmpresa()}"  update="from tableEmp" />
                     </p:contextMenu>
-                    
-                    <p:dialog header="Basic Dialog" widgetVar="hblemp" minHeight="40">
+
+                    <p:dialog header="HABILITAR EMPRESA" widgetVar="hblemp" minHeight="40" style="float: top" width="1000" height="200">
                         <p:dataTable id="tableEmpinac" 
                                      value="#{empresasController.lstEmpresainactiva}" 
                                      var="emp" 
@@ -81,7 +82,25 @@
                         <p:contextMenu for="tableEmpinac">
                             <p:menuitem value="Habilitar" actionListener="#{empresasController.habilitarEmpresa()}"  update="from tableEmp" />
                         </p:contextMenu>
-                    </p:dialog>                 
+                    </p:dialog> 
+                    
+                    <p:dialog header="AGREGAR EMPRESA" widgetVar="agremp" minHeight="40">
+                        <p:outputLabel value="Codigo"/>
+                        <p:inputText placeholder="Codigo" value="#{empresasController.emp.COD_EMP}"/>
+                        <p:outputLabel value="Nombre" />
+                        <p:inputText placeholder="Nombre" value="#{empresasController.emp.NOM_EMP}"/>
+                        <p:outputLabel value="Encargado"/>
+                        <p:inputText placeholder="Encargado" value="#{empresasController.emp.ENC_EMP}"/>
+                        <p:outputLabel value="Telefono 1"/>
+                        <p:inputText placeholder="Telefono 1" value="#{empresasController.emp.TELF1_EMP}"/>
+                        <p:outputLabel value="Telefono 2"/>
+                        <p:inputText placeholder="Telefono 2" value="#{empresasController.emp.TELF2_EMP}"/>
+                        <p:outputLabel value="Direccion"/>
+                        <p:inputText placeholder="Direccion" value="#{empresasController.emp.DIR_EMP}"/>
+                        <p:outputLabel value="Documento"/>
+                        <p:inputText placeholder="Documento" value="#{empresasController.emp.DOC_EMP}"/>
+                        <p:commandButton value="Agregar" actionListener="#{empresasController.agregarEmpresa()}" update="from"/>
+                    </p:dialog>
                 </h:form>
             </ui:define>
         </ui:composition>

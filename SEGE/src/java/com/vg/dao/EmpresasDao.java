@@ -9,6 +9,26 @@ import java.util.List;
 
 public class EmpresasDao extends Dao{
     
+    public void AgregarEmpresa(Empresas emp){
+        this.Conexion();
+        try {
+          String sql = "INSERT INTO EMPRESA (COD_EMP,NOM_EMP,ENC_EMP,TELF1_EMP,TELF2_AMP,DIR_EMP,DOC_EMP,EST_EMP) values (?,?,?,?,?,?,?,?)";
+          PreparedStatement ps = this.getCn().prepareCall(sql);
+          ps.setString(1, emp.getCOD_EMP());
+          ps.setString(2, emp.getNOM_EMP());
+          ps.setString(3, emp.getENC_EMP());
+          ps.setInt(4, emp.getTELF1_EMP());
+          ps.setInt(5, emp.getTELF2_EMP());
+          ps.setString(6, emp.getDIR_EMP());
+          ps.setString(7, emp.getDOC_EMP());
+          ps.setString(8,"A");
+          ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+            
+    
+    }
+    
     public List<Empresas> listarEmpresasActivas() throws Exception{
         List<Empresas> lista;
         ResultSet rs;
