@@ -16,7 +16,9 @@
                                  value="#{empresasController.lstEmpresa}" 
                                  var="emp" 
                                  paginator="true" 
-                                 rows="10">
+                                 rows="10"
+                                 rowKey="#{emp.COD_EMP}"
+                                 selectionMode="single">
 
                         <p:column style="width: 50px">
                             <p:rowToggler />
@@ -48,6 +50,9 @@
                             </p:panelGrid>                            
                         </p:rowExpansion>
                     </p:dataTable>
+                    <p:contextMenu for="tableEmp">
+                        <p:menuitem value="deshabilitar" update="from" />
+                    </p:contextMenu>
                 </h:form>
             </ui:define>
         </ui:composition>

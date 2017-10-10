@@ -1,6 +1,5 @@
 package com.vg.controller;
 
-import com.vg.dao.EgresadosDao;
 import com.vg.dao.EmpresasDao;
 import com.vg.model.Empresas;
 import javax.inject.Named;
@@ -34,6 +33,13 @@ public class EmpresasController implements Serializable {
             throw  e;
         }
     
+    }
+    
+    public void desabilitarEmpresa(){
+        try {
+            
+        } catch (Exception e) {
+        }
     }
     
     public Empresas getEmp() {
