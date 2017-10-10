@@ -12,18 +12,59 @@
                 <h:form id="from" >
                     <center><h1>LISTA DE EMPRESAS</h1></center>
                     <p:commandButton value="Habilitar" onclick="PF('hblemp').show();" />
-                                     <p:dataTable id="tableEmp" 
-                                                  value="#{empresasController.lstEmpresaactiva}" 
+                    <p:dataTable id="tableEmp" 
+                                 value="#{empresasController.lstEmpresaactiva}" 
                                  var="emp" 
                                  paginator="true" 
                                  rows="10"
-                                 selection="#{empresasController.selected}"
+                                 selection="#{empresasController.selecteddes}"
                                  rowKey="#{emp.COD_EMP}"
                                  selectionMode="single">
 
-                            <p:column style="width: 50px">
-                                <p:rowToggler />
-                            </p:column>
+                        <p:column style="width: 50px">
+                            <p:rowToggler />
+                        </p:column>
+                        <p:column headerText="CÓDIGO">
+                            <h:outputText value="#{emp.COD_EMP}"/>
+                        </p:column>
+                        <p:column headerText="NOMBRE">
+                            <h:outputText value="#{emp.NOM_EMP}" />
+                        </p:column>
+                        <p:column headerText="ENCARGADO">
+                            <h:outputText value="#{emp.ENC_EMP}"/>
+                        </p:column>
+                        <p:column headerText="DOCUMENTO">
+                            <h:outputText value="#{emp.DOC_EMP}"/>
+                        </p:column>
+
+                        <p:rowExpansion>
+                            <p:panelGrid columns="3">
+                                <p:column headerText="TELEFONO">
+                                    <h:outputText value="#{emp.TELF1_EMP}"/>
+                                </p:column>
+                                <p:column headerText="REFERENCIA">
+                                    <h:outputText value="#{emp.REF_EMP}" />
+                                </p:column> 
+                                <p:column headerText="DISTRITO">
+                                    <h:outputText value="#{emp.DIS_EMP}"/>
+                                </p:column>
+                            </p:panelGrid>                            
+                        </p:rowExpansion>
+                    </p:dataTable>
+                    <p:contextMenu for="tableEmp">
+                        <p:menuitem value="deshabilitar" actionListener="#{empresasController.desabilitarEmpresa()}"  update="from tableEmp" />
+                    </p:contextMenu>
+                    
+                    <p:dialog header="Basic Dialog" widgetVar="hblemp" minHeight="40">
+                        <p:dataTable id="tableEmpinac" 
+                                     value="#{empresasController.lstEmpresainactiva}" 
+                                     var="emp" 
+                                     paginator="true" 
+                                     rows="10"
+                                     selection="#{empresasController.selectedac}"
+                                     rowKey="#{emp.COD_EMP}"
+                                     selectionMode="single">
+
                             <p:column headerText="CÓDIGO">
                                 <h:outputText value="#{emp.COD_EMP}"/>
                             </p:column>
@@ -36,48 +77,11 @@
                             <p:column headerText="DOCUMENTO">
                                 <h:outputText value="#{emp.DOC_EMP}"/>
                             </p:column>
-
-                            <p:rowExpansion>
-                                <p:panelGrid columns="3">
-                                    <p:column headerText="TELEFONO">
-                                        <h:outputText value="#{emp.TELF1_EMP}"/>
-                                    </p:column>
-                                    <p:column headerText="REFERENCIA">
-                                        <h:outputText value="#{emp.REF_EMP}" />
-                                    </p:column> 
-                                    <p:column headerText="DISTRITO">
-                                        <h:outputText value="#{emp.DIS_EMP}"/>
-                                    </p:column>
-                                </p:panelGrid>                            
-                            </p:rowExpansion>
                         </p:dataTable>
-                        <p:contextMenu for="tableEmp">
-                            <p:menuitem value="deshabilitar" actionListener="#{empresasController.desabilitarEmpresa()}"  update="from tableEmp" />
+                        <p:contextMenu for="tableEmpinac">
+                            <p:menuitem value="Habilitar" actionListener="#{empresasController.habilitarEmpresa()}"  update="from tableEmp" />
                         </p:contextMenu>
-                        <p:dialog header="Basic Dialog" widgetVar="hblemp" minHeight="40">
-                            <p:dataTable id="tableEmp" 
-                                         value="#{empresasController.lstEmpresainactiva}" 
-                                 var="emp" 
-                                 paginator="true" 
-                                 rows="10"
-                                 selection="#{empresasController.selected}"
-                                 rowKey="#{emp.COD_EMP}"
-                                 selectionMode="single">
-
-                            <p:column headerText="CÓDIGO">
-                                <h:outputText value="#{emp.COD_EMP}"/>
-                            </p:column>
-                            <p:column headerText="NOMBRE">
-                                <h:outputText value="#{emp.NOM_EMP}" />
-                            </p:column>
-                            <p:column headerText="ENCARGADO">
-                                <h:outputText value="#{emp.ENC_EMP}"/>
-                            </p:column>
-                            <p:column headerText="DOCUMENTO">
-                                <h:outputText value="#{emp.DOC_EMP}"/>
-                            </p:column>
-                        </p:dataTable>
-                        </p:dialog>                 
+                    </p:dialog>                 
                 </h:form>
             </ui:define>
         </ui:composition>

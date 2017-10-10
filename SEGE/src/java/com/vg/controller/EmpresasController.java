@@ -14,7 +14,8 @@ public class EmpresasController implements Serializable {
     
     Empresas emp = new Empresas();
     EmpresasDao dao;
-    private Empresas selected;
+    private Empresas selecteddes;
+    private Empresas selectedac;
     private List<Empresas> lstEmpresaactiva;
     private List<Empresas> lstEmpresainactiva;
     
@@ -23,6 +24,7 @@ public class EmpresasController implements Serializable {
         dao = new EmpresasDao();
         try {
             listarEmpresaAciva();
+            listarEmpresaAInactiva();
         } catch (Exception e) {
         }
             
@@ -47,8 +49,17 @@ public class EmpresasController implements Serializable {
     
     public void desabilitarEmpresa(){
         try {
-           dao.DeshabilitarEmpresa(selected);
+           dao.DeshabilitarEmpresa(selecteddes);
            listarEmpresaAciva();
+           listarEmpresaAInactiva();
+        } catch (Exception e) {
+        }
+    }
+    public void habilitarEmpresa(){
+        try {
+           dao.habilitarEmpresa(selectedac);
+           listarEmpresaAciva();
+           listarEmpresaAInactiva();
         } catch (Exception e) {
         }
     }
@@ -85,14 +96,22 @@ public class EmpresasController implements Serializable {
         this.lstEmpresainactiva = lstEmpresainactiva;
     }
 
-    
-
-    public Empresas getSelected() {
-        return selected;
+    public Empresas getSelecteddes() {
+        return selecteddes;
     }
 
-    public void setSelected(Empresas selected) {
-        this.selected = selected;
+    public void setSelecteddes(Empresas selecteddes) {
+        this.selecteddes = selecteddes;
     }
+
+    public Empresas getSelectedac() {
+        return selectedac;
+    }
+
+    public void setSelectedac(Empresas selectedac) {
+        this.selectedac = selectedac;
+    }
+
+   
     
 }

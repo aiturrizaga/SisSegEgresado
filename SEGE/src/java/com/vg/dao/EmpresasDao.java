@@ -78,5 +78,16 @@ public class EmpresasDao extends Dao{
         }
     
     }
+    public void habilitarEmpresa(Empresas ep) {
+        this.Conexion();
+        try {
+            String  sql = "UPDATE EMPRESA SET EST_EMP = ? WHERE COD_EMP =?";
+            PreparedStatement st= this.getCn().prepareCall(sql);
+            st.setString(1,"A");
+            st.setString(2,ep.getCOD_EMP());
+            st.executeUpdate();
+        } catch (SQLException e) {
+        }
     
+    }
 }
