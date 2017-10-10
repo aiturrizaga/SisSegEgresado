@@ -10,9 +10,9 @@
         <ui:composition template="./../template/#{usuariosController.users.template}">
             <ui:define name="content">
                 <h:form>
-                    <center><h1>EMPRESAS</h1></center>
+                    <center><h1>LISTA DE EMPRESAS</h1></center>
                     <p:dataTable id="tableEgre" 
-                                 value="#{empresasController.lstEmpresas}" 
+                                 value="#{empresasController.lstEmpresa}" 
                                  var="empre" 
                                  paginator="true" 
                                  rows="10">
@@ -21,31 +21,28 @@
                             <p:rowToggler />
                         </p:column>
                         <p:column headerText="CÓDIGO">
-                            <h:outputText value="#{empre.codEmp}"/>
+                            <h:outputText value="#{empre.COD_EMP}"/>
                         </p:column>
                         <p:column headerText="NOMBRE">
-                            <h:outputText value="#{empre.nomEmp}" />
+                            <h:outputText value="#{empre.NOM_EMP}" />
                         </p:column>
                         <p:column headerText="ENCARGADO">
-                            <h:outputText value="#{empre.encEmp}"/>
+                            <h:outputText value="#{empre.ENC_EMP}"/>
                         </p:column>
-                        <p:column headerText="TELEFONO">
-                            <h:outputText value="#{empre.telf1Emp}"/>
+                        <p:column headerText="DOCUMENTO">
+                            <h:outputText value="#{empre.DOC_EMP}"/>
                         </p:column>
 
                         <p:rowExpansion>
-                            <p:panelGrid columns="4">
-                                <p:column headerText="DIRECCION">
-                                    <h:outputText value="#{empre.dirEmp}"/>
+                            <p:panelGrid columns="3">
+                                <p:column headerText="TELEFONO">
+                                    <h:outputText value="#{empre.TELF1_EMP}"/>
                                 </p:column>
-                                <p:column headerText="DEPARTAMENTO">
-                                    <h:outputText value="#{empre.dptoEmp}"/>
-                                </p:column>
-                                <p:column headerText="PROVINCIA">
-                                    <h:outputText value="#{empre.provEmp}"/>
+                                <p:column headerText="REFERENCIA">
+                                    <h:outputText value="#{empre.REF_EMP}"/>
                                 </p:column>
                                 <p:column headerText="DISTRITO">
-                                    <h:outputText value="#{empre.disEmp}"/>
+                                    <h:outputText value="#{empre.DIR_EMP}"/>
                                 </p:column>
                             </p:panelGrid>                            
                         </p:rowExpansion>
