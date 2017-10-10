@@ -9,19 +9,19 @@ import java.util.List;
 
 public class EmpresasDao extends Dao{
     
-    public List<Empresas> listarempresas() throws Exception{
+    public List<Empresas> listarEmpresas() throws Exception{
         List<Empresas> lista;
         ResultSet rs;
         try {
             this.Conexion();
-            String sql = "SELECT * FROM EMPRESA";
+            String sql = "SELECT * FROM EMPRESA WHERE EST_EMP = 'A'";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             rs = ps.executeQuery();
             lista = new ArrayList();
             Empresas egre;
             while(rs.next()){
                 egre = new Empresas();
-                egre.setCOD_EMP(rs.getInt("COD_EMP"));
+                egre.setCOD_EMP(rs.getString("COD_EMP"));
                 egre.setNOM_EMP(rs.getString("NOM_EMP"));
                 egre.setENC_EMP(rs.getString("ENC_EMP"));
                 egre.setTELF1_EMP(rs.getInt("TELF1_EMP"));

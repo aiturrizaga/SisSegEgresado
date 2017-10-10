@@ -2,7 +2,7 @@ package com.vg.model;
 
 public class Empresas {
     
-    private Integer COD_EMP;
+    private String COD_EMP;
     private String NOM_EMP;
     private String ENC_EMP;
     private Integer TELF1_EMP;
@@ -13,11 +13,11 @@ public class Empresas {
     private String PROV_EMP;
     private String DIS_EMP;
 
-    public Integer getCOD_EMP() {
+    public String getCOD_EMP() {
         return COD_EMP;
     }
 
-    public void setCOD_EMP(Integer COD_EMP) {
+    public void setCOD_EMP(String COD_EMP) {
         this.COD_EMP = COD_EMP;
     }
 

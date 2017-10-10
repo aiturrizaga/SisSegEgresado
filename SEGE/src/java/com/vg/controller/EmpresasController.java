@@ -1,5 +1,6 @@
 package com.vg.controller;
 
+import com.vg.dao.EgresadosDao;
 import com.vg.dao.EmpresasDao;
 import com.vg.model.Empresas;
 import javax.inject.Named;
@@ -18,6 +19,7 @@ public class EmpresasController implements Serializable {
     
     @PostConstruct
     public void inicio() {
+        dao = new EmpresasDao();
         try {
             listarEmpresa();
         } catch (Exception e) {
@@ -27,7 +29,7 @@ public class EmpresasController implements Serializable {
      
     public void listarEmpresa() throws Exception{
         try {
-            lstEmpresa = dao.listarempresas();
+            lstEmpresa = dao.listarEmpresas();
         } catch (Exception e) {
             throw  e;
         }
