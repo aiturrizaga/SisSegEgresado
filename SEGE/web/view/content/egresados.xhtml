@@ -11,7 +11,7 @@
             <ui:define name="content">
                 <h:form>
                     <p:commandButton value="Ver Alumnos" actionListener="#{egresadosController.listarAlumnos()}" oncomplete="PF('alumnosDialog').show()"/>
-                    <p:dataTable value="#{egresadosController.lstEgresados}" var="egre">
+                    <p:dataTable id="tblEgresados" value="#{egresadosController.lstEgresados}" var="egre">
                         <p:column headerText="DNI">
                             <p:outputLabel value="#{egre.dni}"/>
                         </p:column>
@@ -24,8 +24,8 @@
                     </p:dataTable>
 
                     <p:dialog widgetVar="alumnosDialog" header="Lista de Alumnos" modal="true">
-                        <p:commandButton value="Egresar" actionListener="#{egresadosController.cambiarEstEgresado()}"/>
-                        <p:dataTable value="#{egresadosController.lstAlumnos}" var="alum" selection="#{egresadosController.selected}"
+                        <p:commandButton value="Egresar" actionListener="#{egresadosController.cambiarEstEgresado()}" update="tblEgresados tblAlumnos"/>
+                        <p:dataTable id="tblAlumnos" value="#{egresadosController.lstAlumnos}" var="alum" selection="#{egresadosController.selected}"
                                      selectionMode="single" rowKey="#{alum.codigo}">
                             <p:column headerText="DNI">
                                 <p:outputLabel value="#{alum.dni}"/>
