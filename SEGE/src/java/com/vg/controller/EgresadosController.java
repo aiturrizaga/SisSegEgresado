@@ -18,17 +18,29 @@ public class EgresadosController implements Serializable {
     EgresadosDao dao;
     private List<Egresados> lstAlumnos;
     private List<Egresados> lstEgresados;
+    private Egresados selected;
 
     @PostConstruct
     public void inicio() {
         dao = new EgresadosDao();
         try {
             listarEgresados();
+            listarAlumnos();
         } catch (Exception ex) {
             Logger.getLogger(EgresadosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    public void cambiarEstEgresado() throws Exception{
+        try {
+            dao.CambiarEstadoEgresado(selected);
+            listarAlumnos();
+            listarEgresados();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
     public void listarAlumnos() throws Exception {
         try {
             lstAlumnos = dao.listarAlumnos();
@@ -43,6 +55,14 @@ public class EgresadosController implements Serializable {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public Egresados getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Egresados selected) {
+        this.selected = selected;
     }
 
     public List<Egresados> getLstAlumnos() {

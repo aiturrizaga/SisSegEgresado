@@ -9,23 +9,36 @@ import java.util.List;
 
 public class EgresadosDao extends Dao {
 
-    public List<Egresados> listarAlumnos() throws Exception{
+    public void CambiarEstadoEgresado(Egresados eg) throws SQLException {
+        this.Conexion();
+        try {
+            String sql = "UPDATE ALUMNO SET EST_ALUM = ? WHERE COD_ALUM = ?";
+            PreparedStatement ps = this.getCn().prepareStatement(sql);
+            ps.setString(1, "E");
+            ps.setInt(2, eg.getCodigo());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+
+    }
+
+    public List<Egresados> listarAlumnos() throws Exception {
         List<Egresados> lista;
         ResultSet rs;
         try {
             this.Conexion();
-            String sql = "SELECT * FROM ALUMNOS WHERE EST_ALUM = 'A'";
+            String sql = "SELECT * FROM ALUMNO WHERE EST_ALUM = 'A'";
             PreparedStatement ps = this.getCn().prepareCall(sql);
             rs = ps.executeQuery();
             lista = new ArrayList();
             Egresados egre;
-            while(rs.next()){
+            while (rs.next()) {
                 egre = new Egresados();
                 egre.setCodigo(rs.getInt("COD_ALUM"));
                 egre.setNombre(rs.getString("NOM_ALUM"));
                 egre.setApellido(rs.getString("APE_ALUM"));
                 egre.setDni(rs.getInt("DNI_ALUM"));
-                egre.setFing(rs.getDate("INGR_ALUM"));
+                egre.setFing(rs.getDate("FCH_NAC_ALUM"));
                 egre.setTipingr(rs.getString("INGR_ALUM"));
                 egre.setCorreo(rs.getString("CORREO_ALUM"));
                 egre.setTelf1(rs.getInt("TELF1_ALUM"));
@@ -39,18 +52,18 @@ public class EgresadosDao extends Dao {
         }
         return lista;
     }
-    
-    public List<Egresados> listarEgresados() throws Exception{
+
+    public List<Egresados> listarEgresados() throws Exception {
         List<Egresados> lista;
         ResultSet rs;
         try {
             this.Conexion();
-            String sql = "SELECT * FROM ALUMNO WHERE EST_ALUM = 'A'";
+            String sql = "SELECT * FROM ALUMNO WHERE EST_ALUM = 'E'";
             PreparedStatement ps = this.getCn().prepareStatement(sql);
             rs = ps.executeQuery();
             lista = new ArrayList();
             Egresados egre;
-            while(rs.next()){
+            while (rs.next()) {
                 egre = new Egresados();
                 egre.setCodigo(rs.getInt("COD_ALUM"));
                 egre.setNombre(rs.getString("NOM_ALUM"));
