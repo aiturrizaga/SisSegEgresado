@@ -14,21 +14,31 @@ public class EmpresasController implements Serializable {
     
     Empresas emp = new Empresas();
     EmpresasDao dao;
-    private List<Empresas> lstEmpresa;
+    private Empresas selected;
+    private List<Empresas> lstEmpresaactiva;
+    private List<Empresas> lstEmpresainactiva;
     
     @PostConstruct
     public void inicio() {
         dao = new EmpresasDao();
         try {
-            listarEmpresa();
+            listarEmpresaAciva();
         } catch (Exception e) {
         }
             
     }
      
-    public void listarEmpresa() throws Exception{
+    public void listarEmpresaAciva() throws Exception{
         try {
-            lstEmpresa = dao.listarEmpresas();
+            lstEmpresaactiva = dao.listarEmpresasActivas();
+        } catch (Exception e) {
+            throw  e;
+        }
+    
+    }
+    public void listarEmpresaAInactiva() throws Exception{
+        try {
+            lstEmpresainactiva = dao.listarEmpresasInactivas();
         } catch (Exception e) {
             throw  e;
         }
@@ -37,7 +47,8 @@ public class EmpresasController implements Serializable {
     
     public void desabilitarEmpresa(){
         try {
-            
+           dao.DeshabilitarEmpresa(selected);
+           listarEmpresaAciva();
         } catch (Exception e) {
         }
     }
@@ -58,12 +69,30 @@ public class EmpresasController implements Serializable {
         this.dao = dao;
     }
 
-    public List<Empresas> getLstEmpresa() {
-        return lstEmpresa;
+    public List<Empresas> getLstEmpresaactiva() {
+        return lstEmpresaactiva;
     }
 
-    public void setLstEmpresa(List<Empresas> lstEmpresa) {
-        this.lstEmpresa = lstEmpresa;
+    public void setLstEmpresaactiva(List<Empresas> lstEmpresaactiva) {
+        this.lstEmpresaactiva = lstEmpresaactiva;
+    }
+
+    public List<Empresas> getLstEmpresainactiva() {
+        return lstEmpresainactiva;
+    }
+
+    public void setLstEmpresainactiva(List<Empresas> lstEmpresainactiva) {
+        this.lstEmpresainactiva = lstEmpresainactiva;
+    }
+
+    
+
+    public Empresas getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Empresas selected) {
+        this.selected = selected;
     }
     
 }
