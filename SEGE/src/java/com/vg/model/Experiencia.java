@@ -4,51 +4,63 @@ import java.sql.Date;
 
 public class Experiencia {
 
-    private String codigo;
-    private Date fechinicio;
-    private Date fechfin;
-    private String cod_emp;
-    private int cod_alum;
+    private String Codigo,Nombre,Apellido,DNI,Empresa;
+    private Date FIniPrac,FFinPrac;
 
     public String getCodigo() {
-        return codigo;
+        return Codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
     }
 
-    public Date getFechinicio() {
-        return fechinicio;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setFechinicio(Date fechinicio) {
-        this.fechinicio = fechinicio;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public Date getFechfin() {
-        return fechfin;
+    public String getApellido() {
+        return Apellido;
     }
 
-    public void setFechfin(Date fechfin) {
-        this.fechfin = fechfin;
+    public void setApellido(String Apellido) {
+        this.Apellido = Apellido;
     }
 
-    public String getCod_emp() {
-        return cod_emp;
+    public String getDNI() {
+        return DNI;
     }
 
-    public void setCod_emp(String cod_emp) {
-        this.cod_emp = cod_emp;
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
     }
 
-    public int getCod_alum() {
-        return cod_alum;
+    public String getEmpresa() {
+        return Empresa;
     }
 
-    public void setCod_alum(int cod_alum) {
-        this.cod_alum = cod_alum;
+    public void setEmpresa(String Empresa) {
+        this.Empresa = Empresa;
     }
-    
+
+    public Date getFIniPrac() {
+        return FIniPrac;
+    }
+
+    public void setFIniPrac(Date FIniPrac) {
+        this.FIniPrac = FIniPrac;
+    }
+
+    public Date getFFinPrac() {
+        return FFinPrac;
+    }
+
+    public void setFFinPrac(Date FFinPrac) {
+        this.FFinPrac = FFinPrac;
+    }
     
 }

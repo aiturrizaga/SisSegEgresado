@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -16,7 +19,35 @@
             </ui:define>
 
             <ui:define name="content">
-                
+                <h:form>
+                    <p:dataTable id="tbExperiencia" value="#{experienciaController.lstExperiencia}" var="exp" >
+                        <p:column headerText="Codigo" >
+                            <p:outputLabel value="#{exp.codigo}"/>
+                        </p:column>
+                        <p:column headerText="Nombre" >
+                            <p:outputLabel value="#{exp.nombre}"/>
+                        </p:column>
+                        <p:column headerText="Apellido" >
+                            <p:outputLabel value="#{exp.apellido}"/>
+                        </p:column>
+                        <p:column headerText="DNI" >
+                            <p:outputLabel value="#{exp.DNI}"/>
+                        </p:column>
+                        <p:column headerText="Empresa" >
+                            <p:outputLabel value="#{exp.empresa}"/>
+                        </p:column>
+                        <p:column headerText="F. Inicial" >
+                            <p:outputLabel value="#{exp.FIniPrac}"/>
+                        </p:column>
+                        <p:column headerText="F. Final" >
+                            <p:outputLabel value="#{exp.FFinPrac}"/>
+                        </p:column>
+                    </p:dataTable>
+
+
+
+                </h:form>
+
             </ui:define>
 
         </ui:composition>
